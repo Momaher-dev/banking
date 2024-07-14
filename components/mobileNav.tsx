@@ -15,7 +15,6 @@ import Image from "next/image";
 import { sidebarLinks } from "@/constants";
 import { SheetClose } from "@/components/ui/sheet";
 const MobileNav = ({ user }: MobileNavProps) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname();
   return (
     <section className="w-full max-w-[264px]">
@@ -34,12 +33,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
             href="/"
             className=" cursor-pointer px-4 items-center gap-1 flex"
           >
-            <Image
-              src="/icons/logo.svg"
-              alt="MO_MAher logo"
-              width={35}
-              height={35}
-            />
+            <Image src="/icons/logo.svg" alt=" logo" width={35} height={35} />
             <h1 className="text-26 font-ibm-plex-serif font-bold text-blue-1">
               MO_Maher
             </h1>
@@ -84,7 +78,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                 USER
               </nav>
             </SheetClose>
-            <Footer user={user} type="mobile" />
+            <Footer type="mobile" />
           </div>
         </SheetContent>
       </Sheet>
