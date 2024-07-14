@@ -2,13 +2,9 @@ import React from "react";
 import HeaderBox from "@/components/HeaderBox";
 import TotalBalanceBox from "@/components/TotleBalanceBox";
 import RightSideBar from "@/components/RightSideBar";
-
-const Home = () => {
-  const loggedInUser = {
-    firstName: "Mo_Maher",
-    lastName: "Mohammed",
-    email: "mo_maher@gmail.com",
-  };
+import { getLoggedInUser } from "@/lib/actions/user.action";
+const Home = async () => {
+  const loggedInUser = await getLoggedInUser();
 
   return (
     <section className="home">
@@ -18,9 +14,7 @@ const Home = () => {
             <HeaderBox
               type="greeting"
               title="Welcome to Horizon"
-              user={
-                loggedInUser.firstName + " " + loggedInUser.lastName || "Guest"
-              }
+              user={loggedInUser?.name || "Guest"}
               subtext="Access your account and manage your finances with ease."
             />
             <TotalBalanceBox

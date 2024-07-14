@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-// import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -84,7 +84,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                 USER
               </nav>
             </SheetClose>
-            {/* <Footer user={user} type="mobile" /> */}
+            <Footer user={user} type="mobile" />
           </div>
         </SheetContent>
       </Sheet>

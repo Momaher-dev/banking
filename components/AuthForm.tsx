@@ -10,15 +10,15 @@ import { Form } from "@/components/ui/form";
 import { useState } from "react";
 import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
-import { signUp } from "@/lib/actions/user.action";
+import { signIn, signUp } from "@/lib/actions/user.action";
 import CustomInput from "./CustomInput";
 import { useRouter } from "next/navigation";
+import { getLoggedInUser } from "@/lib/actions/user.action";
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const formSchema = authFormSchema(type);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -38,14 +38,14 @@ const AuthForm = ({ type }: { type: string }) => {
         setUser(newUser);
       }
 
-      // if (type === "sign-in") {
-      //   const response = await signIn({
-      //     email: data.email,
-      //     password: data.password,
-      //   });
+      if (type === "sign-in") {
+        const session = await signIn({
+          email: userData.email,
+          password: userData.password,
+        });
 
-      //   if (response) router.push("/");
-      // }
+        if (session) router.push("/");
+      }
     } catch (error) {
       console.log(error);
     } finally {
