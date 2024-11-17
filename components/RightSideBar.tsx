@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import BankCard from "./BankCard";
 
-const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
+const RightSideBar =  ({ user, transactions, banks }: RightSidebarProps) => {
   return (
     <aside className="right-sidebar">
       <section className="flex flex-col pb-8">
@@ -11,15 +11,15 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
         <div className="profile">
           <div className="profile-img">
             <span className="text-3xl font-bold text-blue-500">
-              {user.firstName && user.firstName.length > 0
-                ? user.firstName[0]
+              {user.name && user.name.length > 0
+                ? user.name[0]
                 : ""}
             </span>
           </div>
 
           <div className="profile-details">
             <h1 className="profile-name">
-              {user.firstName} {user.lastName}
+              {user.name}
             </h1>
             <p className="profile-email">{user.email}</p>
           </div>
@@ -39,7 +39,7 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
               <BankCard
                 key={banks[0].$id}
                 account={banks[0]}
-                userName={`${user.firstName} ${user.lastName}`}
+                userName={user.name}
                 showBalance={false}
               />
             </div>
@@ -50,7 +50,7 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
                 <BankCard
                   key={banks[1].$id}
                   account={banks[1]}
-                  userName={`${user.firstName} ${user.lastName}`}
+                  userName={user.name}
                   showBalance={false}
                 />{" "}
               </div>

@@ -16,8 +16,8 @@ declare type SignUpParams = {
   postalCode: string;
   dateOfBirth: string;
   ssn: string;
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
 };
 
 declare type LoginUser = {
@@ -118,7 +118,12 @@ declare type TransferParams = {
   destinationFundingSourceUrl: string;
   amount: string;
 };
-
+interface TotlaBalanceBoxProps {
+  account: Account[];
+  totalBanks: number;
+  totalCurrentBalance: number;
+  currency: string;
+} 
 declare type AddFundingSourceParams = {
   dwollaCustomerId: string;
   processorToken: string;
@@ -328,4 +333,24 @@ declare interface getBankProps {
 
 declare interface getBankByAccountIdProps {
   accountId: string;
+}
+
+// Add this interface
+interface SignInParams {
+  email: string;
+  password: string;
+}
+
+// Make sure SignUpParams is also defined
+interface SignUpParams {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  address1: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
 }
